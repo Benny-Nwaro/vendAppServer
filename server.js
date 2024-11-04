@@ -12,7 +12,7 @@ const app = express()
 
 connectDb()
 
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: 'https://token-mo.vercel.app' }));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -22,7 +22,7 @@ app.use("/transaction", transactionRoute)
 app.use("/transfer", transactionRoute)
 app.use("/balance", balanceRoute)
 app.use("/login", authRoute)
-app.use("/upload", movieRoute)
+app.use("/movies", movieRoute)
 
 app.get('/', (req, res)=>{
     res.send("Requesting Homepage").status(200);

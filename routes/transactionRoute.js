@@ -46,12 +46,14 @@ router.get("/:id", async(req, res)=>{
         updateOneUser({ email: user.email }, { balance: user.balance });
         updateOneUser({ email: user.email }, {tokenClaimed:true});
 
+       if(user.id != undefined){
         transactionDetail.senderId = user.id
         transactionDetail.receiverId = principal.id
         transactionDetail.transactionType = "credited token"
         userTransaction = new Transactions(transactionDetail)
         await userTransaction.save()
         res.json({msg:"Token claimed", userDetails: user })
+       }
         // console.log(userTransaction)
 
       }   

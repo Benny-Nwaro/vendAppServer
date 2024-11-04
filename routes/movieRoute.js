@@ -35,7 +35,7 @@ router.get("/", async (req, res) => {
   router.get("/:id", async (req, res) => {
     try {
       const id = req.params.id
-      const movies = await Movie.findById(id);
+      const movies = await Movie.findOne({userID:id});
       if(!movies){
         res.json({msg:"Your movie list is empty, get some with free Nwaro tokens"})     
       }
