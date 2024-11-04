@@ -1,6 +1,6 @@
 env: flex
 runtime: custom
-service: token
+service: default
 manual_scaling:
   instances: 1
 resources:

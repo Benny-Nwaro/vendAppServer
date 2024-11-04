@@ -25,7 +25,7 @@ app.use("/login", authRoute)
 app.use("/movies", movieRoute)
 
 app.get('/', (req, res)=>{
-    res.send("Requesting Homepage").status(200);
+    res.send(" Homepage Requested").status(200);
 })
 
 
