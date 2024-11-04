@@ -12,7 +12,7 @@ const app = express()
 
 connectDb()
 
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: 'https://token-mo.vercel.app' }));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
