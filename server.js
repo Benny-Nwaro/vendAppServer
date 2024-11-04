@@ -22,7 +22,7 @@ app.use("/transaction", transactionRoute)
 app.use("/transfer", transactionRoute)
 app.use("/balance", balanceRoute)
 app.use("/login", authRoute)
-app.use("/upload", movieRoute)
+app.use("/movies", movieRoute)
 
 app.get('/', (req, res)=>{
     res.send("Requesting Homepage").status(200);
