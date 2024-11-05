@@ -25,8 +25,6 @@ app.use(cors({
 app.options('*', cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
-
 app.use("/register", userRoute)  
 app.use("/transaction", transactionRoute)
 app.use("/transfer", transactionRoute)
@@ -37,6 +35,4 @@ app.use("/movies", movieRoute)
 app.get('/', (req, res)=>{
     res.send(" Homepage Requested").status(200);
 })
-
-
 app.listen(5000, ()=>{console.log("App running on port 5000")})
