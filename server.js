@@ -14,13 +14,15 @@ connectDb()
 
 const allowedOrigins = ['https://token-mo.vercel.app/', 'https://open-d.vercel.app/', 'http://localhost:5173/', 'http://localhost:5174/'];
 app.use(cors({
-  origin: function (origin, callback) {
+  origin: (origin, callback) => {
     if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
-  }
+  },
+  methods: 'GET,POST,OPTIONS',
+  credentials: true,
 }));
 app.options('*', cors());
 
