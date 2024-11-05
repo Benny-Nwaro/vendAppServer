@@ -12,7 +12,17 @@ const app = express()
 
 connectDb()
 
-app.use(cors({ origin: 'https://token-mo.vercel.app' }));
+const allowedOrigins = ['https://token-mo.vercel.app/', 'https://open-d.vercel.app/', 'http://localhost:5173/', 'http://localhost:5174/'];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
