@@ -22,7 +22,7 @@ app.use(cors({
     }
   }
 }));
-
+app.options('*', cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
