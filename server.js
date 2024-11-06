@@ -12,24 +12,28 @@ const app = express()
 
 connectDb()
 
-const allowedOrigins = ['https://token-mo.vercel.app/', 'https://open-d.vercel.app/', 'http://localhost:5173/', 'http://localhost:5174/'];
-app.use(cors({
-  origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET,POST,OPTIONS',
-  credentials: true,
-}));
+const allowedOrigins = [
+    'https://token-mo.vercel.app',
+    'https://open-d.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:5174'
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+  }));
+  
 app.options('*', cors());
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
-
 app.use("/register", userRoute)  
 app.use("/transaction", transactionRoute)
 app.use("/transfer", transactionRoute)
@@ -41,5 +45,5 @@ app.get('/', (req, res)=>{
     res.send(" Homepage Requested").status(200);
 })
 
-
 app.listen(5000, ()=>{console.log("App running on port 5000")})
+
