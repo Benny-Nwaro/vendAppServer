@@ -13,7 +13,7 @@ const app = express()
 connectDb()
 
 const allowedOrigins = [
-    'https://token-mo.vercel.app',
+    'https://token-7ktb.vercel.app',
     'https://open-d.vercel.app',
     'http://localhost:5173',
     'http://localhost:5174'
